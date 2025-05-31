@@ -5,11 +5,11 @@ export default defineConfig({
   description: 'The official documentation for the ContextJS ecosystem',
   cleanUrls: true,
   head: [
-    ['link', { rel: 'icon', href: '/docs/logo.png' }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ],
 
   themeConfig: {
-    logo: '/docs/logo.png',
+    logo: '/logo.png',
 
     nav: [
       { text: 'Guide', link: '/guide' },
