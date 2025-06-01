@@ -44,11 +44,10 @@ ctx version
 ### New project
 
 These commands are equivalent:
-
 ```bash
-ctx new api myApi
-ctx new api -n myApi
-ctx new api --name myApi
+ctx new api my-api
+ctx new api -n my-api
+ctx new api --name my-api
 ```
 
 If no argument is passed for the API name, the current folder name will be used:
@@ -74,7 +73,7 @@ ctx build
 Build specific projects:
 
 ```bash
-ctx build myApi1 myApi2 ...
+ctx build -p myApi1 myApi2 ...
 ```
 
 You can pass TypeScript compiler options directly:
@@ -110,7 +109,7 @@ ctx watch
 Watch specific projects:
 
 ```bash
-ctx watch myApi1 myApi2 ...
+ctx watch -p myApi1 myApi2 ...
 ```
 
 You can also include TypeScript flags with `watch`:

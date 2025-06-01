@@ -9,10 +9,17 @@ At the heart of ContextJS is an object-oriented DI system inspired by C# and Jav
 - Register services via `.addSingleton()`, `.addTransient()`, etc.
 - Resolve automatically using constructor metadata
 - Scopes and lifetimes handled internally
+- And, YES, you can use interfaces in ContextJS!
 
-```ts
-services.addSingleton<ILogger, ConsoleLogger>();
-services.addTransient<MyController>();
+```typescript
+// Register a transient service for interface->implementation
+services.addTransient<ILogger, ConsoleLogger>();
+
+//resolve by interface type
+const logger = services.resolve<ILogger>();
+
+// you have intellisense and type safety from the interface
+const text = logger.log('Hello, ContextJS!');
 ```
 
 ## Lifecycle
@@ -40,8 +47,9 @@ Controllers and route handlers are discovered automatically using decorators:
 ```ts
 @Controller('products')
 export class ProductController {
-  @Get(':id')
-  async getById() { ... }
+  
+  @Get('index/{value}/{optionalValue?}') // optionalValue is optional
+  async index(value: string, optionalValue?: string) { ... }
 }
 ```
 

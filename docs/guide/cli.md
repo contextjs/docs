@@ -9,7 +9,7 @@ The `ctx` command is the official ContextJS CLI. It handles project scaffolding,
 Scaffolds a new project:
 
 ```bash
-ctx new my-app
+ctx new api my-api
 ```
 
 Creates a folder with project config, base services, and tsconfig support.
@@ -30,6 +30,13 @@ Supports all TypeScript CLI flags:
 ctx build --target ES2022 --noEmitOnError
 ```
 
+Specify the project to build:
+```bash
+ctx build -p my-api 
+# or
+ctx build project my-api
+```
+
 ---
 
 ### `ctx watch`
@@ -48,12 +55,14 @@ Executes the project’s entry file (while ensuring all decorators and metadata 
 
 ```bash
 ctx run
+# or
+ctx run -p my-api
+# or
+ctx run project my-api
 ```
 
-This allows you to register controllers and services directly in your main file.
+By default `ctx run` will build the project first, but you can skip this with `--no-build` option:
 
----
-
-## Transformers
-
-All internal transformers (e.g., DI registration, route discovery) are loaded automatically. You can also add custom ones via `.ctxp` config or CLI flags.
+```bash
+ctx run -p my-api --no-build
+```

@@ -17,8 +17,7 @@ This exposes the `ctx` command used for scaffolding, building, and running Conte
 To scaffold a new project:
 
 ```bash
-ctx new api myAPI
-cd my-app
+ctx new api myapi
 ```
 
 This will create a full project structure with TypeScript, `tsconfig.json`, and internal extension support out of the box.

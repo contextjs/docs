@@ -14,79 +14,92 @@ The WebAPI project type in ContextJS provides a robust foundation for building s
 
 ## Getting Started
 
-### Creating a New WebAPI Project
+### Create a New WebAPI Project
 
 ```bash
-ctx new api myApi
-cd myApi
-npm install
+ctx new api my-api
+ctx run
 ```
 
 ### Project Structure Example
 
 ```
-myApi/
+my-api/
+├── build         
+├── node_modules  
 ├── src/
 │   ├── controllers/
-│   │   └── user.controller.ts
-│   ├── middleware/
-│   │   └── auth.middleware.ts
+│   │   └── about.controller.ts
+│   |   └── home.controller.ts
 │   ├── services/
-│   │   └── user.service.ts
-│   └── index.ts
+│   │   ├── interfaces/
+│   │   │    └── i-logger.service.ts
+│   │   │    └── i-message.service.ts
+│   │   └── logger.service.ts
+│   │   └── message.service.ts
+│   │   └── service-collection.extensions.ts
+│   └── main.ts
 ├── context.ctxp
 ├── package.json
 └── tsconfig.json
 ```
+::: info
+`build` and `node_modules` can be ignored in version control
+:::
 
 ### Example: Defining a REST Endpoint
 
-```ts
-// src/controllers/user.controller.ts
-import { Controller, Get } from '@contextjs/webserver-middleware-controllers';
+```typescript
+// src/controllers/home.controller.ts
+import { Controller, Get } from "@contextjs/webserver-middleware-controllers";
+import type { ILoggerService } from "../services/interfaces/i-logger.service.js";
 
-@Controller('/users')
-export class UserController {
-  @Get('/')
-  getAll() {
-    return [{ id: 1, name: 'Alice' }];
-  }
+@Controller()
+export class HomeController {
+    private readonly loggerService: ILoggerService;
+
+    public constructor(loggerService: ILoggerService) {
+        this.loggerService = loggerService;
+    }
+
+    @Get("index")
+    public async index() {
+        this.loggerService.log("HomeController index method called");
+        return "Home";
+    }
 }
 ```
 
 ### Example: Adding Middleware
 
 ```ts
-// src/middleware/auth.middleware.ts
-import { Middleware } from '@contextjs/webserver';
+// src/main.ts
+import "@contextjs/webserver";
+import "@contextjs/webserver-middleware-controllers";
+import "./services/service-collection.extensions.js";
 
-export const authMiddleware: Middleware = (ctx, next) => {
-  if (!ctx.request.headers['authorization']) {
-    ctx.response.status = 401;
-    ctx.response.body = { error: 'Unauthorized' };
-    return;
-  }
-  return next();
+import { Application } from "@contextjs/system";
+import { HttpContext, IMiddleware, WebServerOptions } from "@contextjs/webserver";
+
+const application = new Application();
+
+const myMiddleware: IMiddleware = {
+    name: "MyMiddleware",
+    version: "1.0.0",
+    onRequest: (context: HttpContext) => {
+        console.log("[MyMiddleware] Request received:", context.request.method, context.request.path);
+    }
 };
-```
 
-### Example: Registering Controllers and Middleware
-
-```ts
-// src/index.ts
-import { createServer } from '@contextjs/webserver';
-import { useControllers } from '@contextjs/webserver-middleware-controllers';
-import { authMiddleware } from './middleware/auth.middleware';
-import { UserController } from './controllers/user.controller';
-
-const app = createServer();
-
-app.use(authMiddleware);
-app.use(useControllers([UserController]));
-
-app.listen(3000, () => {
-  console.log('API server running on http://localhost:3000');
+application.useWebServer((options: WebServerOptions) => {
+    options.onEvent = (event) => console.log(event.type, event.detail);
+    options.useMiddleware(myMiddleware);
+    options.useControllers();
 });
+
+application.services.registerServices();
+
+await application.runAsync();
 ```
 
 ## Further Reading

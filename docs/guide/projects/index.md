@@ -12,4 +12,4 @@ Currently, the following project type is available:
 
 | Project Type | Description | Guide |
 |--------------|-------------|-------|
-| WebAPI       | Foundation for scalable backend services, supporting REST and GraphQL endpoints, middleware, and rapid development. | [View](webapi.md) |
+| WebAPI       | Foundation for scalable backend services, supporting API endpoints, custom middleware, and rapid development. | [View](webapi.md) |
