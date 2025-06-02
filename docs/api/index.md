@@ -17,12 +17,13 @@ Each package is fully typed and designed for seamless integration in TypeScript 
 |---------|-------------|----------|
 | **@contextjs/context**      | Main entrypoint for CLI, project scaffolding, and extension management. | [View](./context.md) |
 | **@contextjs/collections**  | Generic data structures such as `Dictionary`, `List`, `Queue`, and `Stack`. | [View](./collections.md) |
+| **@contextjs/system**       | Core utilities: exception hierarchy, console, extensions, and versioning. | [View](./system.md) |
 <!-- | **@contextjs/io**           | File, directory, and path utilities, plus robust exceptions for I/O. | [View](./io.md) |
 | **@contextjs/compiler**     | Compiler extension points, build/watch services, and TypeScript transformer integration. | [View](./compiler.md) |
 | **@contextjs/configuration**| Configuration abstraction, including runtime config loading and providers. | [View](./configuration.md) |
 | **@contextjs/di**           | Type-safe dependency injection, lifetimes, and service collections. | [View](./di.md) |
 | **@contextjs/routing**      | Route parsing, scoring, and route info structures. | [View](./routing.md) |
-| **@contextjs/system**       | Core utilities: exception hierarchy, console, extensions, and versioning. | [View](./system.md) |
+
 | **@contextjs/text**         | String manipulation, formatters, and builders. | [View](./text.md) |
 | **@contextjs/symplex**      | Parsing, diagnostics, and internal syntax tree helpers. | [View](./symplex.md) |
 | **@contextjs/webserver**    | High-performance HTTP/2 server, context objects, and webserver options. | [View](./webserver.md) | -->
