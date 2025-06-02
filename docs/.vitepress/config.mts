@@ -44,13 +44,14 @@ export default defineConfig({
           items: [
             { text: '@contextjs/context', link: '/api/context' },
             { text: '@contextjs/collections', link: '/api/collections' },
+            { text: '@contextjs/system', link: '/api/system' }
             // { text: '@contextjs/compiler', link: '/api/compiler' },
             // { text: '@contextjs/configuration', link: '/api/configuration' },
             // { text: '@contextjs/di', link: '/api/di' },
             // { text: '@contextjs/io', link: '/api/io' },
             // { text: '@contextjs/routing', link: '/api/routing' },
             // { text: '@contextjs/symplex', link: '/api/symplex' },
-            // { text: '@contextjs/system', link: '/api/system' },
+            
             // { text: '@contextjs/text', link: '/api/text' },
             // { text: '@contextjs/webserver', link: '/api/webserver' }
           ]
