@@ -42,18 +42,19 @@ export default defineConfig({
           text: 'API Reference',
           link: '/api',
           items: [
-            { text: '@contextjs/context', link: '/api/context' },
             { text: '@contextjs/collections', link: '/api/collections' },
-            { text: '@contextjs/system', link: '/api/system' }
-            // { text: '@contextjs/compiler', link: '/api/compiler' },
-            // { text: '@contextjs/configuration', link: '/api/configuration' },
-            // { text: '@contextjs/di', link: '/api/di' },
-            // { text: '@contextjs/io', link: '/api/io' },
-            // { text: '@contextjs/routing', link: '/api/routing' },
-            // { text: '@contextjs/symplex', link: '/api/symplex' },
-            
-            // { text: '@contextjs/text', link: '/api/text' },
-            // { text: '@contextjs/webserver', link: '/api/webserver' }
+            { text: '@contextjs/configuration', link: '/api/configuration' },
+            { text: '@contextjs/configuration-json', link: '/api/configuration-json' },
+            { text: '@contextjs/context', link: '/api/context' },
+            { text: '@contextjs/di', link: '/api/di' },
+            { text: '@contextjs/io', link: '/api/io' },
+            { text: '@contextjs/routing', link: '/api/routing' },
+            { text: '@contextjs/system', link: '/api/system' }, 
+            { text: '@contextjs/text', link: '/api/text' },
+            { text: '@contextjs/webserver', link: '/api/webserver' },
+            { text: '@contextjs/webserver-middleware-controllers', link: '/api/webserver-middleware-controllers' },
+            { text: '@contextjs/webserver-middleware-cookies', link: '/api/webserver-middleware-cookies' },
+            { text: '@contextjs/webserver-middleware-static', link: '/api/webserver-middleware-static' },
           ]
         }
       ]

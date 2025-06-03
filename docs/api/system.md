@@ -570,6 +570,19 @@ export declare class Exception extends Error {
 }
 
 /**
+ * Represents an exception thrown when an application fails to run properly.
+ */
+export declare class ApplicationOnRunException extends SystemException {
+    /**
+     * Creates a new instance of the ApplicationOnRunException class.
+     *
+     * @param message The error message that explains the reason for the exception.
+     * @param options Optional error options.
+     */
+    constructor(message: string, options?: ErrorOptions);
+}
+
+/**
  * Represents a generic system-level exception.
  */
 export declare class SystemException extends Exception {
