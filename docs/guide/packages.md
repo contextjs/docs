@@ -12,10 +12,6 @@ Foundation utilities: `Console`, `Exception`, `Throw`, `VersionService`, argumen
 
 Dependency injection container with interface-based registration, constructor metadata via AST transformers, and scoped lifetimes.
 
-### [@contextjs/compiler](../api/compiler.md)
-
-TypeScript build engine with transformer merging, diagnostic reporting, and extension-ready `build()` and `watch()` flows.
-
 ### [@contextjs/context](../api/context.md)
 
 Official CLI tool (`ctx`) for building, watching, scaffolding, and restoring projects; supports full TypeScript flag passthrough and custom transformers.
