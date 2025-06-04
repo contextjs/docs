@@ -65,6 +65,9 @@ app.onRun(async () => {
     console.log("App is running");
     console.log(`User name: ${user.name}`);
     console.log(`User age: ${user.age}`);
+
+    console.log(`Config port: ${key}`);
+    console.log(`Property name: ${property}`);
 });
 
 await app.runAsync();

@@ -25,7 +25,7 @@ npm i @contextjs/routing
 ```typescript
 import "@contextjs/routing";
 
-import { Route, RouteService, } from "@contextjs/routing";
+import { Route } from "@contextjs/routing";
 import { Application } from "@contextjs/system";
 
 const app = new Application();

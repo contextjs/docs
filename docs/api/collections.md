@@ -47,10 +47,10 @@ console.log(dictionary.has("banana"));   // true
 console.log(dictionary.has("cherry"));   // false
 
 dictionary.delete("banana");
-console.log(dictionary.count);           // 1
+console.log(dictionary.count());           // 1
 
 dictionary.clear();
-console.log(dictionary.count);           // 0
+console.log(dictionary.count());           // 0
 
 ```
 
