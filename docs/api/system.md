@@ -226,72 +226,79 @@ export declare class StringExtensions {
 
     /**
      * Checks if the given string is null or empty.
-     * @param {string | null | undefined} value - The string to check.
-     * @returns {boolean} True if the string is null or empty, otherwise false.
+     * @param value The string to check.
+     * @returns {value is null | undefined | ""} True if the string is null or empty.
      */
-    public static isNullOrEmpty(value: string | null | undefined): boolean;
+    public static isNullOrEmpty(value: string | null | undefined): value is null | undefined | "";
 
     /**
      * Checks if the given value is null or undefined.
-     * @param {string | null | undefined} value - The value to check.
-     * @returns {boolean} True if the value is null or undefined, otherwise false.
+     * @param value The value to check.
+     * @returns {value is null | undefined} True if null or undefined.
      */
-    public static isNullOrUndefined(value: string | null | undefined): boolean;
+    public static isNullOrUndefined(value: string | null | undefined): value is null | undefined;
 
     /**
-     * Checks if the given string is null or contains only whitespaces.
-     * @param {string | null | undefined} value - The string to check.
-     * @returns {boolean} True if the string is null or white space, otherwise false.
+     * Checks if the string is null, empty, or only whitespace.
+     * @param value The string to check.
+     * @returns {value is null | undefined | ""} True if null, empty, or only whitespace.
      */
-    public static isNullOrWhiteSpace(value: string | null | undefined): boolean;
+    public static isNullOrWhitespace(value: string | null | undefined): value is null | undefined | "";
 
     /**
-     * Removes all white spaces from the given string.
-     * @param {string} value - The string to process.
-     * @returns {string} The string without white spaces.
+     * Removes all whitespace characters from the string.
+     * @param value The string to process.
+     * @returns {string} The trimmed string.
      */
-    public static removeWhiteSpaces(value: string): string;
+    public static removeWhitespace(value: string): string;
 
     /**
-     * Checks if a character is a line break.
-     * @param value The character to check.
-     * @returns True if the character is a line break; otherwise, false.
-     */
-    public static isLineBreak(value: string): boolean;
-
-    /**
-     * Checks if a character is a digit (0-9).
+     * Checks if the character is a line break character.
      * @param character The character to check.
-     * @returns True if the character is a digit; otherwise, false.
+     * @returns {boolean} True if line break.
+     */
+    public static isLineBreak(character: string): boolean;
+
+    /**
+     * Checks if the character is a digit.
+     * @param character The character to check.
+     * @returns {boolean} True if digit.
      */
     public static isDigit(character: string): boolean;
 
     /**
-     * Checks if a character is a letter from any language (Unicode letters).
+     * Checks if the character is a Unicode letter.
      * @param character The character to check.
-     * @returns True if the character is a letter from any language; otherwise, false.
+     * @returns {boolean} True if letter.
      */
     public static isLetter(character: string): boolean;
 
     /**
-     * Checks if a character is letter or digit.
-     * @param value The character to check.
-     * @returns True if the character is letter or digit; otherwise, false.
+     * Checks if the character is a letter or digit.
+     * @param character The character to check.
+     * @returns {boolean} True if letter or digit.
      */
-    public static isLetterOrDigit(value: string): boolean;
+    public static isLetterOrDigit(character: string): boolean;
 
     /**
-     * Checks if a character is a whitespace character.
-     * @param value The character to check.
-     * @returns True if the character is a whitespace character; otherwise, false.
+     * Checks if the character is a whitespace character.
+     * @param character The character to check.
+     * @returns {boolean} True if whitespace.
      */
-    public static isWhitespace(value: string): boolean;
+    public static isWhitespace(character: string): boolean;
 
     /**
-     * Formats a string with the given arguments.
-     * @param template The string template.
-     * @param args The arguments to format the string.
-     * @returns The formatted string.
+     * Checks if a string contains only whitespace characters (or is empty).
+     * @param value The string to check.
+     * @returns {boolean} True if only whitespace or empty.
+     */
+    public static containsOnlyWhitespace(value: string): boolean;
+
+    /**
+     * Formats a string using positional arguments.
+     * @param template The format string.
+     * @param args The values to insert.
+     * @returns {string} The formatted string.
      */
     public static format(template: string, ...args: any[]): string;
 }
