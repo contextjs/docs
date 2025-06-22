@@ -25,6 +25,8 @@ This package provides attribute-based routing support for the ContextJS webserve
 
 ## Usage
 
+### Basic usage
+
 ```typescript
 import "@contextjs/di";
 import "@contextjs/webserver";
@@ -74,6 +76,38 @@ await application.runAsync();
 ```
 
 Requests to `/home/index` will be routed to the `index()` method of `HomeController`.
+
+
+### Uploading and Saving a File from the Request Body
+
+```typescript
+import { HttpContext } from "@contextjs/webserver";
+import { Controller, IActionResult, Ok, Post } from "@contextjs/webserver-middleware-controllers";
+import fs from "node:fs";
+import path from "node:path";
+import { pipeline } from "node:stream/promises";
+
+@Controller()
+export class HomeController {
+
+    @Post("index")
+    public async indexPost(context: HttpContext): Promise<IActionResult> {
+        // Choose upload directory and file name
+        const uploadDir = path.join(process.cwd(), "uploads");
+        const fileName = "uploaded-file.png";
+        const uploadPath = path.join(uploadDir, fileName);
+
+        // Ensure upload directory exists
+        await fs.promises.mkdir(uploadDir, { recursive: true });
+
+        // Stream the request body directly to disk (no memory buffering)
+        const writeStream = fs.createWriteStream(uploadPath);
+        await pipeline(context.request.body, writeStream);
+
+        return Ok("File uploaded successfully!");
+    }
+}
+```
 
 ## Configuration
 

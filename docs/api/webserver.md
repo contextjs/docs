@@ -484,6 +484,12 @@ export declare class Request {
     public readonly headers: HeaderCollection;
 
     /**
+     * The full request URL path including query parameters.
+     * Example: "/api/resource?param=value"
+     */
+    public body: Readable;
+
+    /**
      * The path of the request, excluding query parameters.
      */
     public get path(): string;
