@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": ["name", "templates"],
+  "properties": {
+    "name": { "type": "string" },
+    "templates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["title", "path", "commands"],
+        "properties": {
+          "title": { "type": "string" },
+          "path": { "type": "string" },
+          "commands": {
+            "type": "object",
+            "additionalProperties": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}
