@@ -3,9 +3,9 @@
   "title": "ContextJS Project Manifest",
   "description": "Minimal configuration for a ContextJS project.",
   "type": "object",
-  "required": ["schema", "name", "type", "main"],
+  "required": ["$schema", "name", "type", "main"],
   "properties": {
-    "schema": {
+    "$schema": {
       "type": "string",
       "description": "URL of the schema used for validation."
     },
