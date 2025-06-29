@@ -1,22 +1,52 @@
 {
-  "type": "object",
-  "required": ["name", "templates"],
-  "properties": {
-    "name": { "type": "string" },
-    "templates": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "required": ["title", "path", "commands"],
-        "properties": {
-          "title": { "type": "string" },
-          "path": { "type": "string" },
-          "commands": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ContextJS Provider Manifest",
+    "description": "Defines templates and CLI command handlers for a ContextJS provider package.",
+    "type": "object",
+    "required": [
+        "$schema",
+        "name",
+        "templates"
+    ],
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The URL of the JSON schema file that validates this manifest."
+        },
+        "name": {
+            "type": "string",
+            "description": "The NPM package name of the provider (should match package.json)."
+        },
+        "templates": {
             "type": "object",
-            "additionalProperties": { "type": "string" }
-          }
+            "description": "A map of template IDs to template definitions provided by this package.",
+            "additionalProperties": {
+                "type": "object",
+                "required": [
+                    "title",
+                    "path",
+                    "commands"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "A human-friendly display name for the template."
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Relative path (from package root) to the template's root folder."
+                    },
+                    "commands": {
+                        "type": "object",
+                        "description": "A mapping of CLI command names (e.g. 'new', 'build') to their handler script paths (relative to the package root).",
+                        "additionalProperties": {
+                            "type": "string",
+                            "description": "The path to the handler file for this command."
+                        }
+                    }
+                },
+                "description": "Definition of a single template available from this provider."
+            }
         }
-      }
     }
-  }
 }
