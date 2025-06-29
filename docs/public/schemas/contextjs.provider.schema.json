@@ -40,8 +40,24 @@
                         "type": "object",
                         "description": "A mapping of CLI command names (e.g. 'new', 'build') to their handler script paths (relative to the package root).",
                         "additionalProperties": {
-                            "type": "string",
-                            "description": "The path to the handler file for this command."
+                            "type": "object",
+                            "required": [
+                                "path"
+                            ],
+                            "properties": {
+                                "path": {
+                                    "type": "string",
+                                    "description": "Path to the handler file for this command."
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Short description for the command."
+                                },
+                                "help": {
+                                    "type": "string",
+                                    "description": "Detailed help for the command."
+                                }
+                            }
                         }
                     }
                 },
