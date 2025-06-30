@@ -1,68 +1,75 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "ContextJS Provider Manifest",
-    "description": "Defines templates and CLI command handlers for a ContextJS provider package.",
-    "type": "object",
-    "required": [
-        "$schema",
-        "name",
-        "templates"
-    ],
-    "properties": {
-        "$schema": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ContextJS Provider Manifest",
+  "description": "Defines templates and CLI command handlers for a ContextJS provider package.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "name",
+    "templates"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "The URL of the JSON schema file that validates this manifest."
+    },
+    "name": {
+      "type": "string",
+      "description": "The NPM package name of the provider (should match package.json)."
+    },
+    "templates": {
+      "type": "object",
+      "description": "A map of template IDs to template definitions provided by this package.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "title",
+          "path",
+          "description",
+          "commands"
+        ],
+        "properties": {
+          "title": {
             "type": "string",
-            "description": "The URL of the JSON schema file that validates this manifest."
-        },
-        "name": {
+            "description": "A human-friendly display name for the template."
+          },
+          "path": {
             "type": "string",
-            "description": "The NPM package name of the provider (should match package.json)."
-        },
-        "templates": {
+            "description": "Relative path (from package root) to the template's root folder."
+          },
+          "description": {
+            "type": "string",
+            "description": "A longer description for the template."
+          },
+          "commands": {
             "type": "object",
-            "description": "A map of template IDs to template definitions provided by this package.",
+            "description": "A mapping of CLI command names (e.g. 'new', 'build') to their handler script definitions.",
             "additionalProperties": {
-                "type": "object",
-                "required": [
-                    "title",
-                    "path",
-                    "commands"
-                ],
-                "properties": {
-                    "title": {
-                        "type": "string",
-                        "description": "A human-friendly display name for the template."
-                    },
-                    "path": {
-                        "type": "string",
-                        "description": "Relative path (from package root) to the template's root folder."
-                    },
-                    "commands": {
-                        "type": "object",
-                        "description": "A mapping of CLI command names (e.g. 'new', 'build') to their handler script paths (relative to the package root).",
-                        "additionalProperties": {
-                            "type": "object",
-                            "required": [
-                                "path"
-                            ],
-                            "properties": {
-                                "path": {
-                                    "type": "string",
-                                    "description": "Path to the handler file for this command."
-                                },
-                                "description": {
-                                    "type": "string",
-                                    "description": "Short description for the command."
-                                },
-                                "help": {
-                                    "type": "string",
-                                    "description": "Detailed help for the command."
-                                }
-                            }
-                        }
-                    }
+              "type": "object",
+              "required": [
+                "path",
+                "description",
+                "help"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Path to the handler file for this command."
                 },
-                "description": "Definition of a single template available from this provider."
+                "description": {
+                  "type": "string",
+                  "description": "Short description for the command."
+                },
+                "help": {
+                  "type": "string",
+                  "description": "Detailed help for the command."
+                }
+              }
             }
-        }
+          }
+        },
+        "description": "Definition of a single template available from this provider."
+      }
     }
+  }
 }
