@@ -5,8 +5,7 @@
     "type": "object",
     "required": [
         "$schema",
-        "name",
-        "templates"
+        "name"
     ],
     "properties": {
         "$schema": {
