@@ -16,6 +16,14 @@
             "type": "string",
             "description": "The NPM package name of the provider (should match package.json)."
         },
+        "compilerExtensions": {
+            "type": "array",
+            "description": "Relative paths to modules exporting ContextJS ICompilerExtension objects as default.",
+            "items": {
+                "type": "string",
+                "description": "Relative path to a JS module exporting one or more ICompilerExtension(s) as default."
+            }
+        },
         "commands": {
             "type": "object",
             "description": "A mapping of CLI command names.",
