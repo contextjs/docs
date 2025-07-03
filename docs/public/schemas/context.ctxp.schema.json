@@ -25,6 +25,36 @@
     "main": {
       "type": "string",
       "description": "Main entry point (e.g., 'src/main.ts')."
+    },
+    "files": {
+      "type": "array",
+      "description": "Files to copy during project compilation.",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Source file path to copy from. Relative to the project root."
+          },
+          "to": {
+            "type": "string",
+            "description": "Destination file path to copy to. Relative to the project root."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "compilerExtensions": {
+      "type": "array",
+      "description": "Relative paths to modules exporting ContextJS ICompilerExtension objects as default.",
+      "items": {
+        "type": "string",
+        "description": "Relative path to a JS module exporting one or more ICompilerExtension(s) as default."
+      }
     }
   },
   "additionalProperties": false
