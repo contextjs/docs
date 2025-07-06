@@ -39,8 +39,7 @@
                 "required": [
                     "title",
                     "path",
-                    "description",
-                    "commands"
+                    "description"
                 ],
                 "properties": {
                     "title": {
