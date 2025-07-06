@@ -204,6 +204,12 @@ export declare class Dictionary<TKey, TValue> {
      * Gets the number of items in the dictionary.
      */
     public count(): number;
+
+    /**
+     * Returns an iterable iterator for the dictionary entries.
+     * Each entry is a tuple of [key, value].
+     */
+    public [Symbol.iterator](): IterableIterator<[TKey, TValue]>
 }
 
 /**
