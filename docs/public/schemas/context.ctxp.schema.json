@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ContextJS Project Manifest",
-  "description": "Minimal configuration for a ContextJS project.",
+  "description": "Configuration for a ContextJS project.",
   "type": "object",
   "required": [
     "$schema",
     "name",
-    "type",
+    "target",
     "main"
   ],
   "properties": {
@@ -18,31 +18,71 @@
       "type": "string",
       "description": "Unique name of the project."
     },
-    "type": {
+    "target": {
       "type": "string",
-      "description": "Project type or template identifier."
+      "description": "Project target"
     },
     "main": {
       "type": "string",
       "description": "Main entry point (e.g., 'src/main.ts')."
     },
-    "files": {
+    "fileOperations": {
       "type": "array",
-      "description": "Files to copy during project compilation.",
+      "description": "Batch file operations to perform as part of the build.",
       "items": {
         "type": "object",
         "required": [
-          "from",
-          "to"
+          "source",
+          "destination",
+          "type"
         ],
         "properties": {
-          "from": {
+          "source": {
             "type": "string",
-            "description": "Source file path to copy from. Relative to the project root."
+            "description": "Source file path (relative to project root)"
           },
-          "to": {
+          "destination": {
             "type": "string",
-            "description": "Destination file path to copy to. Relative to the project root."
+            "description": "Destination file path (relative to project root)"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "copy",
+              "move"
+            ],
+            "description": "Type of operation: 'copy' or 'move'"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "directoryOperations": {
+      "type": "array",
+      "description": "Batch directory operations to perform as part of the build.",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "destination",
+          "type"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source directory path (relative to project root)"
+          },
+          "destination": {
+            "type": "string",
+            "description": "Destination directory path (relative to project root)"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "copy",
+              "move"
+            ],
+            "description": "Type of operation: 'copy' or 'move'"
           }
         },
         "additionalProperties": false
